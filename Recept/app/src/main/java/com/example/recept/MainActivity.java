@@ -16,9 +16,11 @@ public class MainActivity extends AppCompatActivity {
     TextView ing2Tv;
     TextView ing3Tv;
 
-    Integer ing1;
-    Integer ing2;
-    Integer ing3;
+    Integer ei = 1;
+    Integer bloem = 250;
+    Integer melk = 25;
+
+    Button minBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
         TextView ing2Tv= findViewById(R.id.ingedient2);
         TextView ing3Tv = findViewById(R.id.ingedient3);
 
-        Integer ing1;
-        Integer ing2;
-        Integer ing3;
 
         Button minBtn = findViewById(R.id.minusBtn);
         Button plusBtn = findViewById(R.id.plusBtn);
@@ -42,7 +41,10 @@ public class MainActivity extends AppCompatActivity {
         minBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                persons--;
+                persons-=2;
+                ei--;
+                bloem-=250;
+                melk-=25;
                 update();
 
             }
@@ -51,7 +53,10 @@ public class MainActivity extends AppCompatActivity {
         plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                persons++;
+                persons+=2;
+                ei++;
+                bloem+=250;
+                melk+=25;
                 update();
 
             }
@@ -60,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
     }
     void update(){
         personsTv.setText(String.format("Recept voor %d personen", persons));
+        ing1Tv.setText(String.format("Eieren %d personen", ei));
+        ing2Tv.setText(String.format("Eieren %d personen", bloem));
+        ing3Tv.setText(String.format("Eieren %d personen", melk));
 
-
+        minBtn.setEnabled(persons > 0);
     }
 }
