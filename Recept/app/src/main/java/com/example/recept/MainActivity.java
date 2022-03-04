@@ -9,12 +9,22 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    Integer persons = 2;
+    TextView personsTv;
+
+    TextView ing1Tv;
+    TextView ing2Tv;
+    TextView ing3Tv;
+
+    Integer ing1;
+    Integer ing2;
+    Integer ing3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Integer persons = 2;
         TextView personsTv = findViewById(R.id.persons);
 
         TextView ing1Tv = findViewById(R.id.ingedient1);
@@ -27,18 +37,12 @@ public class MainActivity extends AppCompatActivity {
 
         Button minBtn = findViewById(R.id.minusBtn);
         Button plusBtn = findViewById(R.id.plusBtn);
-
-        public void update(){
-
-
-
-        }
+        update();
 
         minBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 persons--;
-                personsTv.setText();
                 update();
 
             }
@@ -48,9 +52,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 persons++;
+                update();
 
             }
         });
+
+    }
+    void update(){
+        personsTv.setText(String.format("Recept voor %d personen", persons));
+
 
     }
 }
