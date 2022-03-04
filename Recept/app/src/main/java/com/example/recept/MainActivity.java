@@ -61,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
         if(bloem >999){
             ing2Tv.setText(String.format(" bloem %.2fkg ", bloem / 1000 ));
         } else {
-            ing2Tv.setText(String.format(" bloem %.0fg ", bloem));
+            ing2Tv.setText(String.format(" Bloem %.0fg ", bloem));
         }
-        ing3Tv.setText(String.format(" %.2fl ", melk / 10));
+        ing3Tv.setText(String.format("Melk %.2fl ", melk / 10));
 
         minBtn.setEnabled(persons > 0);
     }
