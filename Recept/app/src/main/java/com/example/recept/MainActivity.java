@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
     TextView ing3Tv;
 
     Integer ei = 1;
-    Integer bloem = 250;
-    Integer melk = 25;
+    double bloem = 250;
+    double melk = 50;
 
     Button minBtn;
     Button plusBtn;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             persons-=2;
             ei--;
             bloem-=250;
-            melk-=25;
+            melk-=50;
             update();
 
         });
@@ -50,16 +50,20 @@ public class MainActivity extends AppCompatActivity {
             persons+=2;
             ei++;
             bloem+=250;
-            melk+=25;
+            melk+=50;
             update();
         });
     }
 
     void update(){
-        personsTv.setText(String.format("Recept voor %d personen", persons));
+        personsTv.setText(String.format("Pannekoeken voor %d personen", persons));
         ing1Tv.setText(String.format("Eieren %d ", ei));
-        ing2Tv.setText(String.format(" bloem %dg ", bloem));
-        ing3Tv.setText(String.format(" %ddl ", melk));
+        if(bloem >999){
+            ing2Tv.setText(String.format(" bloem %.2fkg ", bloem / 1000 ));
+        } else {
+            ing2Tv.setText(String.format(" bloem %.0fg ", bloem));
+        }
+        ing3Tv.setText(String.format(" %.2fl ", melk / 10));
 
         minBtn.setEnabled(persons > 0);
     }
