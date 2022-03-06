@@ -18,6 +18,10 @@ public class MainActivity extends AppCompatActivity {
     Button minBtn;
     Button plusBtn;
 
+    Ingrediënt ei = new Ingrediënt("Ei",1,"");
+    Ingrediënt bloem = new Ingrediënt("Bloem",250,"g");
+    Ingrediënt melk = new Ingrediënt("Melk",50,"dl");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,23 +36,20 @@ public class MainActivity extends AppCompatActivity {
         minBtn = findViewById(R.id.minusBtn);
         plusBtn = findViewById(R.id.plusBtn);
 
-        Ingrediënt ei = new Ingrediënt("Ei",1,"");
-        Ingrediënt bloem = new Ingrediënt("Bloem",250,"g");
-        Ingrediënt melk = new Ingrediënt("Melk",50,"dl");
         update();
 
         minBtn.setOnClickListener(view -> {
             persons-=2;
 //            -----------eieren----------
-            double aantalEieren = ei.getAmount();
+            float aantalEieren = ei.getAmount();
             aantalEieren--;
             ei.setAmount(aantalEieren);
 //            -----------bloem----------
-            double aantalBloem = bloem.getAmount();
+            float aantalBloem = bloem.getAmount();
             aantalBloem-=250;
             bloem.setAmount(aantalBloem);
 //            -----------melk----------
-            double aantalMelk = melk.getAmount();
+            float aantalMelk = melk.getAmount();
             aantalMelk-=50;
             melk.setAmount(aantalMelk);
             update();
@@ -58,15 +59,15 @@ public class MainActivity extends AppCompatActivity {
         plusBtn.setOnClickListener(view -> {
             persons+=2;
 //            -----------eieren----------
-            double aantalEieren = ei.getAmount();
+            float aantalEieren = ei.getAmount();
             aantalEieren++;
             ei.setAmount(aantalEieren);
 //            -----------bloem----------
-            double aantalBloem = bloem.getAmount();
+            float aantalBloem = bloem.getAmount();
             aantalBloem+=250;
             bloem.setAmount(aantalBloem);
 //            -----------melk----------
-            double aantalMelk = melk.getAmount();
+            float aantalMelk = melk.getAmount();
             aantalMelk+=50;
             melk.setAmount(aantalMelk);
             update();
@@ -75,14 +76,18 @@ public class MainActivity extends AppCompatActivity {
 
     void update(){
         personsTv.setText(String.format("Pannekoeken voor %d personen", persons));
-        ing1Tv.setText(String.format("Eieren %d ", ei));
-        if(bloem >999){
-            ing2Tv.setText(String.format(" bloem %.2fkg ", bloem / 1000 ));
+        ing1Tv.setText(String.format("Eieren %.0f ", ei.getAmount() ));
+        if(bloem.getAmount() >999){
+            ing2Tv.setText(String.format(" bloem %.2fkg ", bloem.getAmount() / 1000));
         } else {
-            ing2Tv.setText(String.format(" Bloem %.0fg ", bloem));
+            ing2Tv.setText(String.format(" Bloem %.0f %s ", bloem.getAmount(),bloem.getUnit()));
         }
-        ing3Tv.setText(String.format("Melk %.2fl ", melk / 10));
 
+        if(melk.getAmount() >9){
+            ing3Tv.setText(String.format(" melk %.0fl ", melk.getAmount() / 10));
+        } else {
+            ing3Tv.setText(String.format(" melk %.0f %s ", melk.getAmount(),melk.getUnit()));
+        }
         minBtn.setEnabled(persons > 0);
     }
 }

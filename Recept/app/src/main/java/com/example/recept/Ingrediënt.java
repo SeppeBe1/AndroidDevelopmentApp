@@ -2,21 +2,26 @@ package com.example.recept;
 
 public class Ingrediënt {
     String name,unit;
-    double amount;
-    Ingrediënt (String name, double amount, String unit) {
+    float amount;
+    Ingrediënt (String name, float amount, String unit) {
         this.name = name;
         this.amount = amount;
+        this.unit = unit;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public double getAmount() {
+    public float getAmount() {
         return this.amount;
     }
 
-    public double setAmount(double newAmount) {
+    public String getUnit() {
+        return this.unit;
+    }
+
+    public float setAmount(float newAmount) {
         this.amount = newAmount;
         return this.amount;
     }
