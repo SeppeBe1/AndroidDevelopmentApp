@@ -15,10 +15,6 @@ public class MainActivity extends AppCompatActivity {
     TextView ing2Tv;
     TextView ing3Tv;
 
-    Integer ei = 1;
-    double bloem = 250;
-    double melk = 50;
-
     Button minBtn;
     Button plusBtn;
 
@@ -35,22 +31,44 @@ public class MainActivity extends AppCompatActivity {
 
         minBtn = findViewById(R.id.minusBtn);
         plusBtn = findViewById(R.id.plusBtn);
+
+        Ingrediënt ei = new Ingrediënt("Ei",1,"");
+        Ingrediënt bloem = new Ingrediënt("Bloem",250,"g");
+        Ingrediënt melk = new Ingrediënt("Melk",50,"dl");
         update();
 
         minBtn.setOnClickListener(view -> {
             persons-=2;
-            ei--;
-            bloem-=250;
-            melk-=50;
+//            -----------eieren----------
+            double aantalEieren = ei.getAmount();
+            aantalEieren--;
+            ei.setAmount(aantalEieren);
+//            -----------bloem----------
+            double aantalBloem = bloem.getAmount();
+            aantalBloem-=250;
+            bloem.setAmount(aantalBloem);
+//            -----------melk----------
+            double aantalMelk = melk.getAmount();
+            aantalMelk-=50;
+            melk.setAmount(aantalMelk);
             update();
 
         });
 
         plusBtn.setOnClickListener(view -> {
             persons+=2;
-            ei++;
-            bloem+=250;
-            melk+=50;
+//            -----------eieren----------
+            double aantalEieren = ei.getAmount();
+            aantalEieren++;
+            ei.setAmount(aantalEieren);
+//            -----------bloem----------
+            double aantalBloem = bloem.getAmount();
+            aantalBloem+=250;
+            bloem.setAmount(aantalBloem);
+//            -----------melk----------
+            double aantalMelk = melk.getAmount();
+            aantalMelk+=50;
+            melk.setAmount(aantalMelk);
             update();
         });
     }
