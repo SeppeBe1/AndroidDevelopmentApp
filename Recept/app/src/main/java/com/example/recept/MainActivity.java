@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     Integer persons = 2;
@@ -18,9 +20,19 @@ public class MainActivity extends AppCompatActivity {
     Button minBtn;
     Button plusBtn;
 
+    Ingrediënt ingrediënts[] = {
+            new Ingrediënt("Ei",1,""),
+            new Ingrediënt("Bloem",250,"g"),
+            new Ingrediënt("Melk",50,"dl"),
+    };
+
+
+
     Ingrediënt ei = new Ingrediënt("Ei",1,"");
     Ingrediënt bloem = new Ingrediënt("Bloem",250,"g");
     Ingrediënt melk = new Ingrediënt("Melk",50,"dl");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
