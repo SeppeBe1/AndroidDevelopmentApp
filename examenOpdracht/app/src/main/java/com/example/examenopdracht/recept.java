@@ -1,38 +1,27 @@
 package com.example.examenopdracht;
 
 public class Recept {
-    private String RimageUrl;
-    private String RreceptTitel;
-    private String RreceptDescription;
+    private String rimageUrl;
+    private String rreceptTitel;
+    private String rreceptDescription;
 
     public Recept(String imageUrl, String receptTitel, String receptDescription){
-        RimageUrl = imageUrl;
-        RreceptTitel = receptTitel;
-        RreceptDescription = receptDescription;
+        rimageUrl = imageUrl;
+        rreceptTitel = receptTitel;
+        rreceptDescription = receptDescription;
     }
 
 
     public String getRimageUrl() {
-        return RimageUrl;
+        return rimageUrl;
     }
 
     public String getRreceptTitel() {
-        return RreceptTitel;
+        return rreceptTitel;
     }
 
     public String getRreceptDescription() {
-        return RreceptDescription;
+        return rreceptDescription;
     }
 
-    public void setRimageUrl(String rimageUrl) {
-        RimageUrl = rimageUrl;
-    }
-
-    public void setRreceptDescription(String rreceptDescription) {
-        RreceptDescription = rreceptDescription;
-    }
-
-    public void setRreceptTitel(String rreceptTitel) {
-        RreceptTitel = rreceptTitel;
-    }
 }
