@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.volley.Request;
@@ -19,11 +20,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ReceptAdapter.onReceptClickListener {
+    public static final String EXTRA_RECEPT_ID = "id";
+    public static final String EXTRA_RECEPT_TITLE = "title";
     private RecyclerView rRecyclerView;
     private ReceptAdapter rReceptAdapter;
     private ArrayList<Recept> rReceptList;
     private RequestQueue rRequestQueue;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                             for(int i = 0; i <jsonArray.length(); i++){
                                 JSONObject result = jsonArray.getJSONObject(i);
 
-                                int receptId = result.getInt("id");
+                                String receptId = result.getString("id");
                                 String receptTitle = result.getString("title");
                                 String imageUrl = result.getString("image");
                                 //Responsen opvangen en uithalen wat nodig
@@ -72,13 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
                             rReceptAdapter = new ReceptAdapter(MainActivity.this,rReceptList);
                             rRecyclerView.setAdapter(rReceptAdapter);
+                            rReceptAdapter.setOnReceptClickListener(MainActivity.this);
+
                             //zorgen er voor dat data in recyclerview terechtkomt
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
-
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -90,5 +94,16 @@ public class MainActivity extends AppCompatActivity {
 
         rRequestQueue.add(request);
 
+    }
+
+    @Override
+    public void onReceptClick(int position) {
+        Intent detailIntent = new Intent(this,DetailRecept.class);
+        Recept clickedRecept = rReceptList.get(position);
+
+        detailIntent.putExtra(EXTRA_RECEPT_ID, clickedRecept.getReceptId());
+        detailIntent.putExtra(EXTRA_RECEPT_TITLE, clickedRecept.getRreceptTitel());
+
+        startActivity(detailIntent);
     }
 }

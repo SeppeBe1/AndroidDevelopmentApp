@@ -46,7 +46,7 @@ public class ReceptAdapter extends RecyclerView.Adapter<ReceptAdapter.ReceptView
 
         String imageUrl = receptPosition.getRimageUrl();
         String receptTitel = receptPosition.getRreceptTitel();
-        int receptId = receptPosition.getReceptId();
+        String receptId = receptPosition.getReceptId();
 
         holder.rTextViewName.setText(receptTitel);
         Picasso.get().load(imageUrl).fit().centerInside().into(holder.rImageViewImage);
@@ -80,9 +80,6 @@ public class ReceptAdapter extends RecyclerView.Adapter<ReceptAdapter.ReceptView
                     }
                 }
             });
-
-
-
         }
     }
 }

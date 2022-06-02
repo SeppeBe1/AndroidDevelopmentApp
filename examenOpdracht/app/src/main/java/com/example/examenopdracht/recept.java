@@ -3,10 +3,10 @@ package com.example.examenopdracht;
 public class Recept {
     private String rimageUrl;
     private String rreceptTitel;
-    private int rreceptId;
+    private String rreceptId;
 
 
-    public Recept(String imageUrl, String receptTitel, int receptid){
+    public Recept(String imageUrl, String receptTitel, String receptid){
         rimageUrl = imageUrl;
         rreceptTitel = receptTitel;
         rreceptId = receptid;
@@ -16,7 +16,7 @@ public class Recept {
     public String getRimageUrl() {
         return rimageUrl;
     }
-    public int getReceptId() {
+    public String getReceptId() {
         return rreceptId;
     }
 

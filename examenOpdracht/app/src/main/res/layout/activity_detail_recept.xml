@@ -7,11 +7,11 @@
     android:orientation="vertical"
     tools:context=".DetailRecept">
 
+
     <ImageView
         android:id="@+id/imageViewDetail"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:src="@mipmap/ic_launcher"/>
+        android:layout_height="300dp" />
 
     <TextView
         android:id="@+id/titleDetail"
@@ -19,9 +19,8 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:textSize="40dp"
-        android:text="kaas"/>
+        android:textSize="40dp" />
+
 
     <TextView
         android:id="@+id/descriptionDetail"
@@ -55,6 +54,7 @@
         android:layout_marginRight="30dp"
         android:textSize="20dp"
         android:text="kaas"/>
+
 
 
 
