@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"/>
         <TextView
-            android:id="@+id/receptNaam"
+            android:id="@+id/receptName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="recept titel"
