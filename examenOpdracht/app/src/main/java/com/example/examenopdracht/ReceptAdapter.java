@@ -18,6 +18,15 @@ import java.util.ArrayList;
 public class ReceptAdapter extends RecyclerView.Adapter<ReceptAdapter.ReceptViewHolder> {
     private Context rContext;
     private ArrayList<Recept> rReceptList;
+    private onReceptClickListener rListener;
+
+    public interface onReceptClickListener{
+        void onReceptClick(int position);
+    }
+
+    public void setOnReceptClickListener(onReceptClickListener listener){
+        rListener = listener;
+    }
 
     public ReceptAdapter(Context context, ArrayList<Recept> receptList){
         rContext = context;
@@ -55,10 +64,24 @@ public class ReceptAdapter extends RecyclerView.Adapter<ReceptAdapter.ReceptView
         public ImageView rImageViewImage;
         public TextView rTextViewName;
 
-        public ReceptViewHolder(@NonNull View itemView) {
-            super(itemView);
-            rImageViewImage = itemView.findViewById(R.id.imageRecept);
-            rTextViewName = itemView.findViewById(R.id.receptName);
+        public ReceptViewHolder(@NonNull View ReceptView) {
+            super(ReceptView);
+            rImageViewImage = ReceptView.findViewById(R.id.imageRecept);
+            rTextViewName = ReceptView.findViewById(R.id.receptName);
+
+            ReceptView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(rListener != null){
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION){
+                            rListener.onReceptClick(position);
+                        }
+                    }
+                }
+            });
+
+
 
         }
     }
