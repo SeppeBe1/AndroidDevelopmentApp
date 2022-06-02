@@ -61,12 +61,12 @@ public class MainActivity extends AppCompatActivity {
                             for(int i = 0; i <jsonArray.length(); i++){
                                 JSONObject result = jsonArray.getJSONObject(i);
 
-                                String receptId = result.getString("id");
+                                int receptId = result.getInt("id");
                                 String receptTitle = result.getString("title");
                                 String imageUrl = result.getString("image");
                                 //Responsen opvangen en uithalen wat nodig
 
-                                rReceptList.add(new Recept(receptId,receptTitle,imageUrl));
+                                rReceptList.add(new Recept(imageUrl,receptTitle,receptId));
                                 //Responsen in Recept object steken
                             }
 

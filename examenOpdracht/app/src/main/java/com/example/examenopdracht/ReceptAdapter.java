@@ -37,11 +37,11 @@ public class ReceptAdapter extends RecyclerView.Adapter<ReceptAdapter.ReceptView
 
         String imageUrl = receptPosition.getRimageUrl();
         String receptTitel = receptPosition.getRreceptTitel();
-        String receptDescription = receptPosition.getRreceptDescription();
+        int receptId = receptPosition.getReceptId();
 
         holder.rTextViewName.setText(receptTitel);
-        holder.rTextViewDescription.setText(receptDescription);
-        Picasso.get().load(imageUrl).fit().centerInside().into(holder.rImageView);
+        Picasso.get().load(imageUrl).fit().centerInside().into(holder.rImageViewImage);
+
 
     }
 
@@ -52,15 +52,13 @@ public class ReceptAdapter extends RecyclerView.Adapter<ReceptAdapter.ReceptView
 
     public class ReceptViewHolder extends RecyclerView.ViewHolder{
 
-        public ImageView rImageView;
+        public ImageView rImageViewImage;
         public TextView rTextViewName;
-        public TextView rTextViewDescription;
 
         public ReceptViewHolder(@NonNull View itemView) {
             super(itemView);
-            rImageView = itemView.findViewById(R.id.imageRecept);
+            rImageViewImage = itemView.findViewById(R.id.imageRecept);
             rTextViewName = itemView.findViewById(R.id.receptName);
-            rTextViewDescription = itemView.findViewById(R.id.receptDescription);
 
         }
     }
