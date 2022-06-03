@@ -36,7 +36,7 @@ public class DetailRecept extends AppCompatActivity {
 
         Intent intent = getIntent();
         String id = intent.getStringExtra(EXTRA_RECEPT_ID);
-        parseJSON(id);
+//        parseJSON(id);
         String titel = intent.getStringExtra(EXTRA_RECEPT_TITLE);
 
         TextView titleTextView = findViewById(R.id.titleDetail);
@@ -63,47 +63,47 @@ public class DetailRecept extends AppCompatActivity {
     }
 
 
-    private void parseJSON(String id){
-
-        ImageView imageView = findViewById(R.id.imageViewDetail);
-        TextView descriptionTextView = findViewById(R.id.descriptionDetail);
-        TextView instructionTextView = findViewById(R.id.instructionDetail);
-
-        String host = "https://api.spoonacular.com/recipes/";
-        String urlid =  id;
-        String what = "/information?";
-        String key = "apiKey=f370281a5a7947a08019c2134d25b356";
-        String params = "&includeNutrition=false";
-
-
-        String url = host + urlid +  what + key + params;
-
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new
-                Response.Listener<JSONObject>() {
-                    //Responsen aanvragen met GET en de url
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                                String image = response.getString("image");
-                                String summary = response.getString("summary");
-                                String instructions = response.getString("instructions");
-
-                                //String imageUrl = result.getString("image");
-                                //Responsen opvangen en uithalen wat nodig
-                            Picasso.get().load(image).fit().centerInside().into(imageView);
-                            descriptionTextView.setText(summary);
-                            instructionTextView.setText(instructions);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-
-        });
-    }
+//    private void parseJSON(String id){
+//
+//        ImageView imageView = findViewById(R.id.imageViewDetail);
+//        TextView descriptionTextView = findViewById(R.id.descriptionDetail);
+//        TextView instructionTextView = findViewById(R.id.instructionDetail);
+//
+//        String host = "https://api.spoonacular.com/recipes/";
+//        String urlid =  id;
+//        String what = "/information?";
+//        String key = "apiKey=f370281a5a7947a08019c2134d25b356";
+//        String params = "&includeNutrition=false";
+//
+//
+//        String url = host + urlid +  what + key + params;
+//
+//        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new
+//                Response.Listener<JSONObject>() {
+//                    //Responsen aanvragen met GET en de url
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                                String image = response.getString("image");
+//                                String summary = response.getString("summary");
+//                                String instructions = response.getString("instructions");
+//
+//                                //String imageUrl = result.getString("image");
+//                                //Responsen opvangen en uithalen wat nodig
+//                            Picasso.get().load(image).fit().centerInside().into(imageView);
+//                            descriptionTextView.setText(summary);
+//                            instructionTextView.setText(instructions);
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                error.printStackTrace();
+//            }
+//
+//        });
+//    }
 }
