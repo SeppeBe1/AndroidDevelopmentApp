@@ -1,11 +1,16 @@
 package com.example.examenopdracht;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.SearchView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,17 +45,38 @@ public class MainActivity extends AppCompatActivity implements ReceptAdapter.onR
 
         rReceptList = new ArrayList<>();
         rRequestQueue = Volley.newRequestQueue(this);
-        parseJSON();
+        parseJSON("chicken");
     }
-    private void parseJSON(){
+
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.mainmenu, menu);
+//        MenuItem search = findViewById(R.id.action_search);
+//        SearchView searchView = (SearchView) search.getActionView();
+//        searchView.setQueryHint("Search");
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String text) {
+//                parseJSON(text);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+//        return super.onCreateOptionsMenu(menu);
+//    }
+
+    private void parseJSON(String text){
 
         String host = "https://api.spoonacular.com/recipes/";
         String what = "complexSearch?";
         String key = "apiKey=f370281a5a7947a08019c2134d25b356";
 
         String number = "&number=2";
-        String inputsearch = "chicken";
-        String search = "&query=" + inputsearch;
+        String search = "&query=" + text;
         String params = number + search;
 
         String url = host + what + key + params;

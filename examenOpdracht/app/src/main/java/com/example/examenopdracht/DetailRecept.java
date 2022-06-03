@@ -21,7 +21,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,12 +62,6 @@ public class DetailRecept extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //    @Override
-//    protected void onCreateOptionsmenu(menu:Menu?): boolean{
-//        getMenuInflater().inflate(R.menu.detailmenu,menu);
-//        return true;
-//    }
-
 
     private void parseJSON(String id){
 
@@ -95,11 +88,11 @@ public class DetailRecept extends AppCompatActivity {
                                 String summary = response.getString("summary");
                                 String instructions = response.getString("instructions");
 
-                                Picasso.get().load(image).fit().centerInside().into(imageView);
-                                descriptionTextView.setText(summary);
-                                instructionTextView.setText(instructions);
                                 //String imageUrl = result.getString("image");
                                 //Responsen opvangen en uithalen wat nodig
+                            Picasso.get().load(image).fit().centerInside().into(imageView);
+                            descriptionTextView.setText(summary);
+                            instructionTextView.setText(instructions);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -109,8 +102,8 @@ public class DetailRecept extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-
             }
+
         });
     }
 }
